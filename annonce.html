@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post an Ad</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150vh;
+            background: linear-gradient(135deg, #4a90e2, #50c9c3);
+        }
+        main {
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        header a img {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, textarea, button {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        textarea {
+            resize: none;
+        }
+        button {
+            padding: 12px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #357ab8;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="avito.html"><img src="ShopEase_logo_transparent-removebg-preview.png"></a>
+        </header>
+        <h1>Post an Ad</h1>
+        <section id="post-ad">
+            <form>
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="phones">Phones</option>
+                    <option value="apartments">Apartments</option>
+                    <option value="cars">Cars</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="furniture">Furniture</option>
+                </select>
+
+                <label for="title">Ad Title:</label>
+                <input type="text" id="title" name="title" placeholder="Enter a title for your ad" required>
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="5" placeholder="Describe your item" required></textarea>
+
+                <label for="price">Price ($):</label>
+                <input type="number" id="price" name="price" step="0.01" placeholder="Enter price in dollars" required>
+
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+
+                <label for="contact">Contact Info:</label>
+                <input type="text" id="contact" name="contact" placeholder="Email or phone number" required>
+
+                <button type="submit">Submit Ad</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

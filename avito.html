@@ -1,0 +1,704 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+            margin-top: 80px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+            padding: 10px 20px;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .lo {
+            width: 80px;
+        }
+
+        .cs {
+            width: 30px;
+            height: 30px;
+        }
+
+        .tr {
+            width: 30px;
+            height: 30px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            background-color: white;
+            display: flex;
+        }
+
+        li a {
+            color: rgb(93, 93, 93);
+            text-decoration: none;
+            background-color: white;
+            border-radius: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: small;
+            text-align: center;
+            padding: 5px;
+            flex: 1;
+        }
+
+        a:hover {
+            background-color: rgb(222, 222, 222);
+        }
+
+        .con a {
+            text-decoration: none;
+            background-color: white;
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header button {
+            display: flex;
+        }
+
+        .ad {
+            text-decoration: none;
+        }
+
+        .b1 {
+            padding: 13px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: medium;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: red;
+            color: white;
+        }
+
+        section {
+            display: flex;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .search {
+            display: flex;
+            width: 600px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 50px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .search input[type="text"] {
+            flex: 1;
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search select {
+            border: none;
+            outline: none;
+            background-color: #eaeaea;
+            color: #333;
+            cursor: pointer;
+            font-size: 16px;
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+            border-left: 1px solid #ccc;
+            padding: 15px;
+        }
+
+        .b2 {
+            border: none;
+            background-color: rgb(68, 129, 233);
+            color: white;
+            padding: 20px;
+            padding-right: 60px;
+            padding-left: 60px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 50px;
+            margin-left: 20px;
+        }
+
+        .b2:hover {
+            background-color: rgb(6, 91, 239);
+        }
+
+        .elec {
+            width: 40px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5em;
+            margin: 20px 0;
+            padding: 0 10px;
+        }
+
+        .section-title i {
+            font-size: 1.2em;
+            margin-right: 10px;
+            color: #3498db;
+        }
+
+        .card-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 15px;
+            padding: 10px;
+            max-width: 100%;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            border-radius: 10px;
+        }
+
+        .card-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            flex: 0 0 250px;
+            scroll-snap-align: start;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 10px;
+        }
+
+        .card-info .details {
+            font-size: 0.9em;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .card-info .title {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .card-info .price {
+            color: #0073e6;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+
+        .card-info .heart-icon {
+            font-size: 1.2em;
+            color: #999;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .card-info .heart-icon:hover {
+            color: #e74c3c;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .footer-section {
+            max-width: 300px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 10px;
+            color: #f39c12;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: #bdc3c7;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #f39c12;
+        }
+
+        .footer-social a {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #bdc3c7;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: #f39c12;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #7f8c8d;
+            padding-top: 10px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        .cat {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .cat a {
+            display: block;
+            padding: 10px 15px;
+            white-space: nowrap;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .cat a:hover {
+            background-color: #f0f0f0;
+        }
+
+        nav ul li:hover .cat {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img class="lo" src="ShopEase_logo_transparent-removebg-preview.png" alt="logo">
+        <nav>
+            <ul>
+                <li><a href="#">Browse Listings</a></li>
+                <li><a href="#">Top Deals</a></li>
+                <li><a href="#">My Listings</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Shops</a></li>
+                <li>
+                    <a href="#">Categories</a>
+                    <div class="cat">
+                        <a href="#">Electronics</a>
+                        <a href="#">Fashion</a>
+                        <a href="#">Vehicles</a>
+                        <a href="#">Home & Garden</a>
+                        <a href="#">Sports</a>
+                        <a href="#">Toys</a>
+                    </div>
+                </li>
+
+            </ul>
+        </nav>
+        <a href="contact.html"><img class="cs" src="cs.png" alt="cs" style="cursor: pointer;"></a>
+        <img class="tr" src="tsl.png" alt="tr">
+        <div class="con">
+            <a href="login.html">Registration</a>
+        </div>
+        <a href="annonce.html" class="ad"><button class="b1">Post an Ad</button></a>
+    </header>
+    <section>
+        <div class="search">
+            <input type="text" placeholder="Search for anything">
+            <select>
+                <option>All the categories</option>
+                <option>Electronics</option>
+                <option>Toys</option>
+                <option>Cars</option>
+                <option>Art</option>
+                <option>Sports</option>
+                <option>Real Estate</option>
+            </select>
+        </div>
+        <div class="rechercher">
+            <button class="b2">Search</button>
+        </div>
+    </section>
+    <main>
+        <div class="section-title">
+            <img src="devices.png" class="elec">
+            <span>New Electronics Ads</span>
+        </div>
+        <div class="card-container">
+
+            <div class="card">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Front_%26_Back_Face_of_iPhone_16_Pro_Max.png/250px-Front_%26_Back_Face_of_iPhone_16_Pro_Max.png">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 10</span>
+                        <span>Posted 7 minutes ago</span>
+                    </div>
+                    <div class="title">Iphone 16 pro max a vendre</div>
+                    <div class="price">11,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img
+                    src="https://static.wikia.nocookie.net/worlddatabase/images/3/3e/IPhone_15_Leak.png/revision/latest/scale-to-width-down/250?cb=20230216184132">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 4</span>
+                        <span>Posted 7 minutes ago</span>
+                    </div>
+                    <div class="title">Iphone 15 neuf 126GB</div>
+                    <div class="price">9,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img
+                    src="https://www.kigalidiscount.com/cdn/shop/products/ix_960de608-dce2-4ccd-a400-857081c48857_800x.jpg?v=1627164185">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 3</span>
+                        <span>Posted 7 minutes ago</span>
+                    </div>
+                    <div class="title">Iphone X bon occasion etat batterie 90%</div>
+                    <div class="price">4,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img
+                    src="https://static.s-sfr.fr/media/catalogue/article/mobile/hfelkcrc/1_GooglePixel9_Noir_Front-Back_184x184.webp">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 8</span>
+                        <span>Posted 5 minutes ago</span>
+                    </div>
+                    <div class="title">Google pixel 9 256GB</div>
+                    <div class="price">10,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img
+                    src="https://i2.wp.com/aleqaria.com.eG/images//2022/06/google-pixel-7-1656226293-0.jpg?resize=250%2C150&ssl=1">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 6</span>
+                        <span>Posted 2 hours ago</span>
+                    </div>
+                    <div class="title">Google pixel 7 pro</div>
+                    <div class="price">7,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img
+                    src="https://cdn.dxomark.com/wp-content/uploads/medias/post-165263/Samsung-Galaxy-S24-Ultra_A_featured-image-packshot-review.jpg">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 5</span>
+                        <span>Posted 1 day ago</span>
+                    </div>
+                    <div class="title">Samsung Galaxy S24 Ultra 512GB</div>
+                    <div class="price">10,500 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://buymobile.com.au/cdn/shop/files/SMG-A166E-DS-5G-LGTGRY_1200x1200.jpg?v=1735249267">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 9</span>
+                        <span>Posted 1 day ago</span>
+                    </div>
+                    <div class="title">Samsung A16 4Go Ram</div>
+                    <div class="price">3,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/71QZyo8ekbL.jpg">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 12</span>
+                        <span>Posted 3 hours ago</span>
+                    </div>
+                    <div class="title">Samsung A15 6Go Ram, Cam 50MP </div>
+                    <div class="price">3,999 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img
+                    src="https://www.oppo.com/content/dam/oppo/product-asset-library/find/find-x8-series/en/oppo-find-x8-pro/white-apac/assets/images-color-konka-b-1-mo.png">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 7</span>
+                        <span>Posted 2 hours ago</span>
+                    </div>
+                    <div class="title">OPPO Find X8 Pro</div>
+                    <div class="price">4,870 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://www.notebookcheck.net/fileadmin/Notebooks/Xiaomi/Redmi_12/IMG_20230721_113613.jpg">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 11</span>
+                        <span>Posted 30 minutes ago</span>
+                    </div>
+                    <div class="title">Xiaomi Redmi 12</div>
+                    <div class="price">2,500 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section-title">
+            <i>&#128719;</i>
+            <span>New Appartements Ads</span>
+        </div>
+
+        <div class="card-container">
+
+            <div class="card">
+                <img src="https://cache.marieclaire.fr/data/photo/w1200_h630_c17/1pg/salon-lumineux-canape-arrondi.jpg"
+                    alt="Apartment 1">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 10</span>
+                        <span>Posted 7 minutes ago</span>
+                    </div>
+                    <div class="title">Appartement à vendre bien orienté</div>
+                    <div class="price">1,100,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://ems2.imgix.net/2800x1869/8918355b9f/1.jpg?ixlib=js-2.3.2&auto=format&q=40&w=250&h=150&fit=crop&s=ac78b2438bba8907bc75dd5ef15bfd7e"
+                    alt="Apartment 2">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 4</span>
+                        <span>Posted 7 minutes ago</span>
+                    </div>
+                    <div class="title">Magnifique appartement 115 m² 2 mars</div>
+                    <div class="price">1,550,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/812nCPmC-OL._AC_UF1000,1000_QL80_.jpg" alt="Apartment 3">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 3</span>
+                        <span>Posted 7 minutes ago</span>
+                    </div>
+                    <div class="title">Vente appartement 126m riviera val fleurie</div>
+                    <div class="price">1,900,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://mavitrine.ma/storage/app/uploads/public/5dd/fa2/43c/thumb_128205_250_150_0_0_crop.jpg"
+                    alt="Apartment 4">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 8</span>
+                        <span>Posted 5 minutes ago</span>
+                    </div>
+                    <div class="title">Bel appartement en centre-ville</div>
+                    <div class="price">1,200,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/6a/67/b4/6a67b43a648c739c5557330a1192f58b.jpg" alt="Apartment 5">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 6</span>
+                        <span>Posted 2 hours ago</span>
+                    </div>
+                    <div class="title">Appartement spacieux à vendre</div>
+                    <div class="price">1,750,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://www.citya.com/media/images/agences/biens/392/location/filigrane-IMG_5908-1223941325900826578.jpg"
+                    alt="Apartment 6">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 5</span>
+                        <span>Posted 1 day ago</span>
+                    </div>
+                    <div class="title">Charmant appartement avec jardin</div>
+                    <div class="price">2,100,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://ems2.imgix.net/2800x1869/a76a518363/2021-01-20-thuja-15.jpg?ixlib=js-2.3.2&auto=format&q=40&w=250&h=150&fit=crop&s=14df5813a40543e6b33bb1e6f14ee373"
+                    alt="Apartment 7">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 9</span>
+                        <span>\Posted 1 day ago</span>
+                    </div>
+                    <div class="title">Penthouse avec vue sur la mer</div>
+                    <div class="price">3,500,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://static.cotemaison.fr/medias_10546/w_640,c_fill,g_north/le-salon-et-le-couloir-de-l-appartement_5399843.jpg"
+                    alt="Apartment 8">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 12</span>
+                        <span>Posted 3 hours ago</span>
+                    </div>
+                    <div class="title">Appartement moderne et lumineux</div>
+                    <div class="price">1,800,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://photo.barnes-international.com/annonces/bms/255/min/0d4125590329539d5478c9ca0797c1b5_b85ccd6c9f_1920-original.jpg"
+                    alt="Apartment 9">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 7</span>
+                        <span>Posted 2 hours ago</span>
+                    </div>
+                    <div class="title">Appartement neuf en résidence sécurisée</div>
+                    <div class="price">2,000,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://foto.hrsstatic.com/fotos/0/2/250/150/80/000000/http%3A%2F%2Ffoto-origin.hrsstatic.com%2Ffoto%2F2%2F5%2F4%2F3%2F254323%2F254323_ap_50020467.jpg/BWtkAviD%2BdHMRBGzUmh7cw%3D%3D/600%2C400/6/Residhotel_Le_Central_Gare_Residence_de_Tourisme-Grenoble-Appartement-1-254323.jpg"
+                    alt="Apartment 10">
+                <div class="card-info">
+                    <div class="details">
+                        <span>&#128247; 11</span>
+                        <span>Posted 30 minutes ago</span>
+                    </div>
+                    <div class="title">Appartement avec terrasse</div>
+                    <div class="price">2,250,000 DH</div>
+                    <span class="heart-icon">&#9825;</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About ShopEase</h3>
+                <p>Your go-to marketplace for everything you need. Buy, sell, and discover amazing deals with ease!</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="avito.html">Home</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="term.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="footer-social">
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ShopEase. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
